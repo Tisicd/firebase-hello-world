@@ -1,64 +1,62 @@
 # Firebase Hello World
 
-Sitio estático minimalista destinado a Firebase Hosting para cumplir con la rúbrica de proveedores cloud. Incluye Dockerfile para empaquetar la aplicación y comprobarla localmente antes de publicarla.
+Minimal static site meant for Firebase Hosting to satisfy the cloud providers rubric. Includes a Dockerfile to package the app and test it locally before publishing.
 
-## Estructura
+## Structure
 
-- `public/index.html`: contenido principal de la página.
-- `firebase.json`: configuración de hosting (single page).
-- `.firebaserc`: placeholder para el identificador real del proyecto Firebase.
-- `Dockerfile`: imagen Nginx ligera con los assets estáticos.
+- `public/index.html`: main page content.
+- `firebase.json`: hosting configuration (single-page setup).
+- `.firebaserc`: placeholder for the actual Firebase project ID.
+- `Dockerfile`: lightweight Nginx image serving the static assets.
 
-## Requisitos previos
+## Prerequisites
 
-- Node.js 18+ (para instalar CLI si se desea).
-- CLI de Firebase (`npm install -g firebase-tools`).
-- CLI de Docker.
+- Node.js 18+ (optional, if you want to install the CLI).
+- Firebase CLI (`npm install -g firebase-tools`).
+- Docker CLI.
 
-## Pasos recomendados
+## Recommended Steps
 
-1. Autenticarse en Firebase:
+1. Authenticate with Firebase:
    ```bash
    firebase login
    ```
-2. Inicializar proyecto en la carpeta actual (si no existe):
+2. Initialize the project in the current folder (if needed):
    ```bash
    firebase init hosting
    ```
-3. Reemplazar `REEMPLAZAR_CON_ID_PROYECTO` en `.firebaserc` por el ID del proyecto.
-4. Ejecutar emulador local:
+3. Replace `REEMPLAZAR_CON_ID_PROYECTO` in `.firebaserc` with your project ID.
+4. Run the local emulator:
    ```bash
    firebase emulators:start --only hosting
    ```
-5. Desplegar:
+5. Deploy:
    ```bash
    firebase deploy --only hosting
    ```
 
-## Imagen Docker
+## Docker Image
 
-Construir localmente:
-
-```bash
-docker build -t tuusuario/firebase-hello-world:latest .
-```
-
-Probar:
+Build locally:
 
 ```bash
-docker run --rm -p 8080:80 tuusuario/firebase-hello-world:latest
+docker build -t youruser/firebase-hello-world:latest .
 ```
 
-Publicar en DockerHub:
+Test:
+
+```bash
+docker run --rm -p 8080:80 youruser/firebase-hello-world:latest
+```
+
+Publish to Docker Hub:
 
 ```bash
 docker login
-docker push tuusuario/firebase-hello-world:latest
+docker push youruser/firebase-hello-world:latest
 ```
 
-## Próximos pasos
+## Next Steps
 
-- Añadir integración con Cloud Functions para contenido dinámico.
-- Configurar pruebas automáticas del enlace de producción usando Lighthouse CI.
-
-
+- Add Cloud Functions integration for dynamic content.
+- Configure automated Lighthouse CI checks for the production URL.
